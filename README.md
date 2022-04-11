@@ -1,4 +1,6 @@
-# crud-vuex
+# CRUD VUEX
+
+https://crud-vuex-5dd7b.web.app
 
 ## Project setup
 ```
