@@ -1,18 +1,34 @@
 <template>
-  <div class="home">
+  <div class="container">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1 class="my-3">Lista de Pacientes</h1>
+    <RouterLink to="/crear" class="btn btn-primary mb-3 d-grid"
+      >Añadir Paciente</RouterLink
+    >
+    <div
+      class="text-primary mt-5"
+      role="status"
+      aria-hidden="true"
+      v-if="cargaSpinner"
+    >
+      <div class="spinner-border m-3"></div>
+      <div>Cargando contenido...</div>
+    </div>
+    <TablaComp :data="pacientes" v-if="!cargaSpinner" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import TablaComp from "@/components/TablaComp.vue";
+import { mapState } from "vuex";
 export default {
   name: "HomeView",
   components: {
-    HelloWorld,
+    TablaComp,
+  },
+  computed: {
+    ...mapState(["pacientes", "cargaSpinner"]),
   },
 };
 </script>
